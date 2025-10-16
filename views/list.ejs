@@ -1,0 +1,40 @@
+<%- include("header") -%>
+
+<!-- ============================== -->
+<!-- List Header Section -->
+<!-- ============================== -->
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+
+<!-- ============================== -->
+<!-- Scrollable Task List Container -->
+<!-- ============================== -->
+<div class="task-container">
+  <% newListItems.forEach(function(item){ %>
+    <form action="/delete" method="post" class="task-form">
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
+        <p><%= item.name %></p>
+      </div>
+      <input type="hidden" name="listName" value="<%= listTitle %>">
+    </form>
+  <% }) %>
+</div>
+
+<!-- ============================== -->
+<!-- Fixed Input Section (Always visible) -->
+<!-- ============================== -->
+<div class="input-section">
+  <form class="item add-item-form" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+
+<!-- ============================== -->
+<!-- Footer (Below Input Section) -->
+<!-- ============================== -->
+<footer>
+  <p>2025 Task-Matrix. All rights reserved.</p>
+</footer>

@@ -1,0 +1,20 @@
+{
+  "name": "task-matrix",
+  "version": "1.0.0",
+  "description": "Task-Matrix: A dynamic to-do list web application using Node.js, Express, EJS, and MongoDB. Supports multiple lists, item addition, deletion, and modular UI design.",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Hammad Salehin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "lodash": "^4.17.11",
+    "mongoose": "^8.19.1"
+  }
+}
