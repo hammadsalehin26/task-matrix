@@ -1,4 +1,5 @@
 // jshint esversion:6
+require("dotenv").config();
 
 // ======================= MODULE IMPORTS =======================
 const express = require("express");      // Web framework for routing
@@ -17,9 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));        // Serve static assets
 
 // ======================= DATABASE CONNECTION =======================
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB")
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch(err => console.log("MongoDB connection error:", err));
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("MongoDB connected successfully"))
+.catch(err => console.log("MongoDB connection error:", err));
 
 
 // ======================= MONGOOSE SCHEMAS =======================
@@ -140,7 +144,8 @@ app.get("/about", (req, res) => {
 });
 
 // ======================= SERVER =======================
-app.listen(3000, () => console.log("Server running on port 3000"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // ======================= TECHNICAL NOTES =======================
 // 1. Async/await ensures sequential DB operations and avoids callback hell.
